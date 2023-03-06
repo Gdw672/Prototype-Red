@@ -5,10 +5,10 @@ using Zenject;
 
 public class PlayerMovement : MonoBehaviour
 {
-     [SerializeField] private float sizePlayer;
+   [SerializeField] private float sizePlayer;
    private Rigidbody2D playerBody;
    internal bool isPressed;
-   private float speedOfWalk;
+   [SerializeField] private float speedOfWalk;
    [SerializeField] private Vector2 vectorMove;
     private void Start()
     {
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public void tranformateSizePlayer(bool isLeft)
     {
         if(isLeft)
-            gameObject.transform.localScale = new Vector3(-sizePlayer, -sizePlayer, -sizePlayer);
+            gameObject.transform.localScale = new Vector3(-sizePlayer, sizePlayer, sizePlayer);
  
         else
             gameObject.transform.localScale = new Vector3(sizePlayer, sizePlayer, sizePlayer);
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isPressed)
         {
-            playerBody.transform.Translate(vectorMove);
+            playerBody.transform.Translate(vectorMove * speedOfWalk);
         }
     }
 }
