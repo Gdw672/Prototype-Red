@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [SerializeField] private string Idle, Run, Attack;
+    [SerializeField] private string Run, Attack;
     private Animator _animator;
     private Rigidbody2D _rigidbody;
 

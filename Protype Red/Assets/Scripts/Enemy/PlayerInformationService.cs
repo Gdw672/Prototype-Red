@@ -17,17 +17,6 @@ public class PlayerInformationService : IPlayerInformationService
     {
         this._playerStats = _playerStats;
     }
-
-    public void SetHealt()
-    {
-        _playerStats.Health = 2;
-    }
-       
-
-    public void Test()
-    {
-        UnityEngine.MonoBehaviour.print("TEST");
-    }
 }
 
 public interface IPlayerInformationService
@@ -35,8 +24,6 @@ public interface IPlayerInformationService
     public void GetTransformOfPlayer(Transform transform);
     public PlayerStats GetInformationOfPlayer();
     public void SetInformationOfPlayer(PlayerStats _playerStats);
-    public void SetHealt();
-    public void Test();
     
 } 
 public class PlayerStats
