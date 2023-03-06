@@ -20,7 +20,5 @@ public class PlayerInformation : MonoBehaviour
         _playerStats.playerTranform = gameObject.transform;
         _playerStats.Health = playerStartInfo.HP;
         _playerInformationService.SetInformationOfPlayer(_playerStats);
-
-        print(playerStartInfo.HP);
     }
 }

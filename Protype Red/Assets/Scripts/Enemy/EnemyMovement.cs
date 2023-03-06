@@ -17,4 +17,10 @@ public class EnemyMovement : MonoBehaviour
     {
        transform.position = Vector3.MoveTowards(gameObject.transform.position, playerStats.playerTranform.position, 0.003f);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerHit")
+            Destroy(gameObject);
+    }
 }

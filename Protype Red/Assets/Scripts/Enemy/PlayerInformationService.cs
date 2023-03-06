@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerInformationService : IPlayerInformationService
 {
-    public PlayerStats _playerStats;
+    public PlayerStats ActualPlayerStats;
     public void GetTransformOfPlayer(Transform transform)
     {
-        _playerStats.playerTranform = transform;
+        ActualPlayerStats.playerTranform = transform;
     }
     public PlayerStats GetInformationOfPlayer()
     {
-        return _playerStats;
+        return ActualPlayerStats;
     }
     public void SetInformationOfPlayer(PlayerStats _playerStats)
     {
-        this._playerStats = _playerStats;
+        this.ActualPlayerStats = _playerStats;
     }
 }
 

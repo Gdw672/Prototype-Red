@@ -21,6 +21,7 @@ public class Creature
 {
     public ETypeOfCreature typeOfCreature;
     public int HP;
+    public int Damage;
 }
 
 internal interface ICreaturesInfo
