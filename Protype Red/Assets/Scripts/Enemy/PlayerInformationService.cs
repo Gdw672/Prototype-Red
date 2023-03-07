@@ -1,33 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PlayerInformationService : IPlayerInformationService
 {
-    public PlayerStats ActualPlayerStats;
-    public void GetTransformOfPlayer(Transform transform)
+    [Inject] private ICreaturesInfo creaturesInfo;
+    public PlayerStats playerStats;
+
+    public void SetStartPlayerStats()
     {
-        ActualPlayerStats.playerTranform = transform;
+        var playerCreature = creaturesInfo.Creatures.Find(play => play.typeOfCreature == ETypeOfCreature.Player);
+        playerStats = new PlayerStats();
+        playerStats.Damage = playerCreature.Damage;
+        playerStats.Health = playerCreature.HP;       
+    }
+    public void SetTransformOfPlayer(Transform transform)
+    {
+        playerStats.playerTranform = transform;
     }
     public PlayerStats GetInformationOfPlayer()
     {
-        return ActualPlayerStats;
-    }
-    public void SetInformationOfPlayer(PlayerStats _playerStats)
-    {
-        this.ActualPlayerStats = _playerStats;
+        return playerStats;
     }
 }
 
 public interface IPlayerInformationService
 {
-    public void GetTransformOfPlayer(Transform transform);
+    public void SetTransformOfPlayer(Transform transform);
     public PlayerStats GetInformationOfPlayer();
-    public void SetInformationOfPlayer(PlayerStats _playerStats);
-    
+    public void SetStartPlayerStats();
 } 
 public class PlayerStats
 {
     public Transform playerTranform;
     public int Health;
+    public int Damage;
 }

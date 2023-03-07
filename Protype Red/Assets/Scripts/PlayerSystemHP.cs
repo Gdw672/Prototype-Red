@@ -6,17 +6,12 @@ using Zenject;
 public class PlayerSystemHP : MonoBehaviour
 {
     [Inject] private IPlayerInformationService _playerInformationService;
-    PlayerStats playerStats;
-    IEnumerator Start()
+    public PlayerStats playerStats;
+    void Awake()
     {
-      playerStats = _playerInformationService.GetInformationOfPlayer();
-
-        for (int i = 0; i < 3; i++)
-        {
-            print(playerStats.Health);
-            yield return new WaitForSeconds(3f);
-            playerStats.Health -= 2;
-        }
+        _playerInformationService.SetStartPlayerStats();
+        _playerInformationService.SetTransformOfPlayer(gameObject.transform);
+        playerStats = _playerInformationService.GetInformationOfPlayer();
     }
 
     // Update is called once per frame

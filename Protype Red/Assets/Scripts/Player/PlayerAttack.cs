@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D boxCollider2D;
+    bool attack;
     
     public void StartAttack() 
     {
@@ -12,9 +13,13 @@ public class PlayerAttack : MonoBehaviour
     }
     public IEnumerator Attack()
     {
-        boxCollider2D.enabled = true;
-        print("YES");
-        yield return new WaitForSeconds(0.5f);
-        boxCollider2D.enabled = false;
+        if(!attack)
+        {
+            boxCollider2D.enabled = true;
+            attack = true;
+            yield return new WaitForSeconds(0.35f);
+            attack = false;
+            boxCollider2D.enabled = false;
+        }
     }
 }

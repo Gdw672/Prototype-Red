@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatures:
   - typeOfCreature: 0
-    HP: 10
-    Damage: 0
-  - typeOfCreature: 1
     HP: 20
-    Damage: 0
+    Damage: 5
+  - typeOfCreature: 1
+    HP: 50
+    Damage: 5

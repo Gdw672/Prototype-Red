@@ -12,15 +12,14 @@ public class EnemyMovement : MonoBehaviour
         playerStats = _playerInformationService.GetInformationOfPlayer();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-       transform.position = Vector3.MoveTowards(gameObject.transform.position, playerStats.playerTranform.position, 0.003f);
+        playerStats = _playerInformationService.GetInformationOfPlayer();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Update is called once per frame
+    void FixedUpdate()
     {
-        if (collision.tag == "PlayerHit")
-            Destroy(gameObject);
+          transform.position = Vector3.MoveTowards(gameObject.transform.position, playerStats.playerTranform.position, 0.009f);
     }
 }
